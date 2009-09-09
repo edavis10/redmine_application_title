@@ -1,4 +1,5 @@
 require 'redmine'
+require 'redmine_application_title/hooks/layout_hooks'
 
 Redmine::Plugin.register :redmine_application_title do
   name 'Redmine Application Title plugin'
