@@ -17,6 +17,13 @@ A copy of the plugin can be downloaded from {Little Stream Software}[https://pro
 2. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
 3. Configure your titles in Administration > Plugins > Redmine Application Title Configure
 
+If you want to override how the title and subtitle are displayed, you can use the following CSS rules in your theme:
+
+* <tt>div#redmine_application_title { }</tt> - Entire box for the titles
+* <tt>div#redmine_application_title h1 { }</tt> - Application title
+* <tt>div#redmine_application_title h2 { }</tt> - Subtitle
+
+
 == License
 
 This plugin is licensed under the GNU GPL v2.  See COPYRIGHT.txt and GPL.txt for details.
