@@ -1,3 +1,6 @@
-# English strings go here for Rails i18n
 en:
-  my_label: "My label"
+  application_title_setting: "Enter your application title and subtitle here."
+  application_title_label_application_title: "Title"
+  application_title_label_application_title_help: "If left empty, this will default to your Redmine site title. (Example: {{title}})"
+  application_title_label_application_subtitle: "Subtitle"
+    

@@ -1,0 +1,19 @@
+<p>
+  <%= l(:application_title_setting) %>
+</p>
+
+<p>
+  <label>
+    <%= l(:application_title_label_application_title) %>
+  </label>
+  <%= text_field_tag 'settings[application_title]', @settings['application_title'], :size => 15 %>
+  <small><%= l(:application_title_label_application_title_help, :title => Setting.app_title)%></small>
+</p>
+
+<p>
+  <label>
+  <%= l(:application_title_label_application_subtitle) %>
+  </label>
+  <%= text_field_tag 'settings[application_subtitle]', @settings['application_subtitle'], :size => 15 %>
+</p>
+

@@ -6,4 +6,10 @@ Redmine::Plugin.register :redmine_application_title do
   author 'Author name'
   description 'This is a plugin for Redmine'
   version '0.0.1'
+
+  settings(:default => {
+    'application_title' => '',
+    'application_subtitle' => ''
+  }, :partial => 'settings/redmine_application_title_settings')
+
 end
