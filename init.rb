@@ -5,7 +5,11 @@ require 'redmine_application_title/hooks/layout_hooks'
 require 'dispatcher'
 
 Dispatcher.to_prepare do
-  require_dependency 'application'
+  begin
+    require_dependency 'application'
+  rescue LoadError
+    require_dependency 'application_controller'
+  end
   require 'redmine_application_title/patches/application_controller_patch'
   ApplicationController.send(:include, RedmineApplicationTitle::Patches::ApplicationControllerPatch)
 end
