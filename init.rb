@@ -1,6 +1,16 @@
 require 'redmine'
 require 'redmine_application_title/hooks/layout_hooks'
 
+# Patches to the Redmine core.
+require 'dispatcher'
+
+Dispatcher.to_prepare do
+  require_dependency 'application'
+  require 'redmine_application_title/patches/application_controller_patch'
+  ApplicationController.send(:include, RedmineApplicationTitle::Patches::ApplicationControllerPatch)
+end
+
+
 Redmine::Plugin.register :redmine_application_title do
   name 'Application Title'
   author 'Eric Davis'
