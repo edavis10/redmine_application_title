@@ -1,24 +1,21 @@
 module ApplicationTitleHelper
   def html_title(*args)
-    title = super(*args)
 
     if args.present?
       # Setter
-
-      if Setting.plugin_redmine_application_title['application_subtitle'].present?
-        title.unshift(Setting.plugin_redmine_application_title['application_subtitle'])
-      end
-
-      if Setting.plugin_redmine_application_title['application_title'].present?
-        title.unshift(Setting.plugin_redmine_application_title['application_title'])
-      end
-      
-      @html_title = title
-
+      @html_title = super(*args)
     else
       # Getter
-      title = [title]
+      title = @html_title || []
 
+      if @project && !title.include?(@project.name)
+        title.unshift(@project.name)
+      end
+
+      if !title.include?(Setting.app_title)
+        title << Setting.app_title
+      end
+      
       if Setting.plugin_redmine_application_title['application_subtitle'].present? &&
           !title.include?(Setting.plugin_redmine_application_title['application_subtitle'])
         title.unshift(Setting.plugin_redmine_application_title['application_subtitle'])
