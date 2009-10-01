@@ -41,4 +41,24 @@ class ApplicationTitleHelperTest < HelperTestCase
 
     assert_equal 'App title - Best application ever - Redmine', response
   end
+
+  def test_html_title_with_matching_app_title
+    Setting.app_title = "Redmine"
+    Setting.plugin_redmine_application_title['application_title'] = 'Redmine'
+    Setting.plugin_redmine_application_title['application_subtitle'] = 'Best application ever'
+
+    response = html_title
+
+    assert_equal 'Redmine - Best application ever', response
+  end
+
+  def test_html_title_with_missing_application_title
+    Setting.app_title = "Redmine"
+    Setting.plugin_redmine_application_title['application_title'] = ''
+    Setting.plugin_redmine_application_title['application_subtitle'] = 'Best application ever'
+
+    response = html_title
+
+    assert_equal 'Best application ever - Redmine', response
+  end
 end

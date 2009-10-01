@@ -12,10 +12,6 @@ module ApplicationTitleHelper
         title.unshift(@project.name)
       end
 
-      if !title.include?(Setting.app_title)
-        title << Setting.app_title
-      end
-      
       if Setting.plugin_redmine_application_title['application_subtitle'].present? &&
           !title.include?(Setting.plugin_redmine_application_title['application_subtitle'])
         title.unshift(Setting.plugin_redmine_application_title['application_subtitle'])
@@ -24,6 +20,10 @@ module ApplicationTitleHelper
       if Setting.plugin_redmine_application_title['application_title'].present? &&
           !title.include?(Setting.plugin_redmine_application_title['application_title'])
         title.unshift(Setting.plugin_redmine_application_title['application_title'])
+      end
+
+      if !title.include?(Setting.app_title)
+        title << Setting.app_title
       end
 
       title.compact.join(' - ')

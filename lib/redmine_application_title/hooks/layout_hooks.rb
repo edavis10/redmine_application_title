@@ -6,11 +6,7 @@ module RedmineApplicationTitle
       end
 
       def view_layouts_base_body_bottom(context={})
-        title = if Setting.plugin_redmine_application_title['application_title'].blank?
-                  Setting.app_title
-                else
-                  Setting.plugin_redmine_application_title['application_title']
-                end
+        title = Setting.plugin_redmine_application_title['application_title'] || ''
         subtitle = Setting.plugin_redmine_application_title['application_subtitle'] || ''
 
         app_title = content_tag(:h1, h(title))
